@@ -15,7 +15,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: UseDonNet@2
+- task: UseDotNet@2
   displayName: 'use .NET SDK 5.x'
   inputs:
     packageType: sdk

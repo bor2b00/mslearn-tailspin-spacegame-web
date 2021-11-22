@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/JimWhisenhunt/Practice/_apis/build/status/ETServerMetricClient?branchName=master)](https://dev.azure.com/JimWhisenhunt/Practice/_build/latest?definitionId=1&branchName=master)
 
 # Contributing
 

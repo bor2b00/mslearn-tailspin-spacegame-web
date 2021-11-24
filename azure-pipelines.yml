@@ -56,11 +56,7 @@ steps:
   displayName: 'Run unit tests - $(buildConfiguration)'
   inputs:
     command: 'test'
-    arguments: >
-                '--no-build --configuration $(buildConfiguration)
-                /p:CollectCoverage=true 
-                /p:CoverletOutputFormat=cobertura
-                /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
+    arguments: '--no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
     publishTestResults: true
     projects: '**/*.Tests.csproj'
 
@@ -69,11 +65,7 @@ steps:
   inputs:
     command: custom
     custom: tool
-    arguments: >
-                'run reportgenerator 
-                -reports:$(Build.SourcesDirectory)/**/coverage.cobertura.xml 
-                -targetdir:$(Build.SourcesDirectory)/CodeCoverage 
-                -reporttypes:HtmlInline_AzurePipelines'
+    arguments: 'run reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage  -reporttypes:HtmlInline_AzurePipelines'
 
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish code coverage report'
@@ -87,10 +79,7 @@ steps:
     command: 'publish'
     projects: '**/*.csproj'
     publishWebProjects: false
-    arguments: >
-                '--no-build 
-                 --configuration $(buildConfiguration) 
-                 --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
+    arguments:  '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
     zipAfterPublish: true
 
 - task: PublishBuildArtifacts@1
